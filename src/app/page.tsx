@@ -1,48 +1,67 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
-import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
-import {Button} from "@/components/ui/button";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function Home() {
+  const [dbMessage, setDbMessage] = useState<string>("");
+
+  useEffect(() => {
+    fetch("/api/database")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message) {
+          setDbMessage(data.message);
+        } else if (data.error) {
+          setDbMessage(`${data.error}`);
+        }
+      })
+      .catch((err) => {
+        setDbMessage(`Failed to fetch: ${err}`);
+      });
+  }, []);
+
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex mt-100 gap-20">
           <div className="flex flex-col gap-5">
               <Select>
                   <SelectTrigger className="w-[350px]">
-                      <SelectValue placeholder="Theme" />
+                      <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent>
-                      <SelectItem value="light">Light</SelectItem>
-                      <SelectItem value="dark">Dark</SelectItem>
-                      <SelectItem value="system">System</SelectItem>
+                      <SelectItem value="light">Placeholder1</SelectItem>
+                      <SelectItem value="dark">Placeholder2</SelectItem>
+                      <SelectItem value="system">Placeholeder3</SelectItem>
                   </SelectContent>
               </Select>
               <Select>
                   <SelectTrigger className="w-[350px]">
-                      <SelectValue placeholder="Theme" />
+                      <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent>
-                      <SelectItem value="light">Light</SelectItem>
-                      <SelectItem value="dark">Dark</SelectItem>
-                      <SelectItem value="system">System</SelectItem>
+                      <SelectItem value="light">Placeholder1</SelectItem>
+                      <SelectItem value="dark">Placeholder2</SelectItem>
+                      <SelectItem value="system">Placeholeder3</SelectItem>
                   </SelectContent>
               </Select>
               <Select>
                   <SelectTrigger className="w-[350px]">
-                      <SelectValue placeholder="Theme" />
+                      <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent>
-                      <SelectItem value="light">Light</SelectItem>
-                      <SelectItem value="dark">Dark</SelectItem>
-                      <SelectItem value="system">System</SelectItem>
+                      <SelectItem value="light">Placeholder1</SelectItem>
+                      <SelectItem value="dark">Placeholder2</SelectItem>
+                      <SelectItem value="system">Placeholeder3</SelectItem>
                   </SelectContent>
               </Select>
               <Button>Submit</Button>
           </div>
           <div>
               <Table>
-                  <TableCaption>A list of your recent invoices.</TableCaption>
                   <TableHeader>
                       <TableRow>
                           <TableHead className="w-[100px]">Invoice</TableHead>
