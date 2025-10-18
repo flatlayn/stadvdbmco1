@@ -50,7 +50,7 @@ export async function GET() {
   } catch (error) {
     console.error("Database error:", error);
     return NextResponse.json(
-      { error: "Failed to fetch database metadata" },
+      { error: "Failed to fetch database" },
       { status: 500 }
     );
   }
