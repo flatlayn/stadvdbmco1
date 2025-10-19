@@ -202,7 +202,7 @@ export default function Home() {
       </main>
 
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center mt-6">
-        <a className="flex items-center gap-2 hover:underline" href="#" target="_blank">
+        <a className="flex items-center gap-2 hover:underline" href="https://drive.google.com/file/d/1gHhJ_s7MFk8YAVzlEQZwIBGkfa4ZRcW5/view?usp=sharing" target="_blank">
           <Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
           Technical Report
         </a>
