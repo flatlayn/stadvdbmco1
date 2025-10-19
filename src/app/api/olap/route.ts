@@ -116,6 +116,7 @@ export async function GET(req: NextRequest) {
 
     const [rows] = await db.query(query);
     return NextResponse.json(rows);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error("OLAP error:", err);
     return NextResponse.json({ error: err.message }, { status: 500 });

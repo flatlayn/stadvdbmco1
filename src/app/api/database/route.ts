@@ -39,6 +39,7 @@ export async function GET() {
        ORDER BY description ASC;`
     );
 
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     return NextResponse.json({
       years: (years as any[]).map((r) => r.year),
       regions: (regions as any[]).map((r) => r.region),
@@ -47,6 +48,7 @@ export async function GET() {
       accounts: (accounts as any[]).map((r) => r.account),
       loanstatuses: (loanstatuses as any[]).map((r) => r.loanstatus),
     });
+    /* eslint-disable @typescript-eslint/no-explicit-any */
   } catch (error) {
     console.error("Database error:", error);
     return NextResponse.json(
